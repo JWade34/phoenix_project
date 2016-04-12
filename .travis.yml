@@ -1,30 +1,31 @@
----
 language: node_js
 node_js:
-  - "4"
-  env:
-    - CXX=g++-4.8
-  addons:
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-      packages:
-        - g++-4.8
-
+- '4'
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ofzd9IR6nB/uRxs6aLd2S8GhNSQ9ka9NvvFYH+7J6ZVphvnM0fkWzFbQ+ddA7TURlylzEJ/bqVOV6CCAt7eA/cXHhas7pcDHd+VEZlG5qaRMZWWyHbuGBdouZznLZwjAGI2erPsCFumA59kgPwHmbkLpKhyHEkfdsn/wUj+izcPqIibHdsNgRsl7hUX7PKRB8MPYb2m2kt3tpbqYRb/eJ48KTA4HZ6zuxF7OTZVbaw/JF5KZWweNeu0eGN848O6Jb0tCFAnuEPQJjXq3aiK4TjglyTLepda84haQ9+h9z2UlnQh3gndZAdE3SOwB3zo3imMExWXJJCROcwi9Yub6HvIVQxq1pV8O6cMZmSAsN0tBVQIe4T8zRU8LYLlSfKAnYs155nBUaL23tDo61wBGFAknp+TUOgIsWU0c0QMudT/qIBaCL/RypesRF8XqR4rZsD44cbPuqKjXHMlk69wZ9QPTj7nCckHV5eGBlByJ8kwaoQAcm4BRTk0Xl9J3mSm90IoYKxs5C9I9YzG3BvFwQFBvapYqy4Ra5gOZwwMs0t2PGqCCFj/szt4OIdw14udTX3bV5t3wb/4SUuA5fpqPUrjKJBuDWeXAGFIq74PuHeZ+Tc9Sw3GHYqINfMiCJEk4dDBrLCSTMWAMVTUQDPZLhuse7yAnEcGt8/sdswpJXb0=
+  app: still-reaches-49116
+  on:
+    repo: JWade34/phoenix_project
